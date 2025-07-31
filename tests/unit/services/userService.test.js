@@ -10,4 +10,4 @@ describe('User service', () => {
 		const mockUsers = [{ name: 'Test', email: 'test@example.com' }];
 		User.find.mockResolvedValue(mockUSers);
 	})
-})
+})	

@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const authRoutes = require('./routes/auth.routes');
 const privateRoute = require('./routes/private.routes');
-
+const errorHandler = require('./middlewares/error.middleware');
 const app = express();
 
 // Middleware
@@ -19,5 +19,7 @@ app.use('/api/private', privateRoute);
 app.get('/health', ( req, res ) => {
 	res.status(200).json({ status: 'Ok', message: 'Server is healthy' });
 });
+
+app.use(errorHandler);
 
 module.exports = app;
