@@ -4,6 +4,9 @@ const helmet = require('helmet');
 const authRoutes = require('./routes/auth.routes');
 const privateRoute = require('./routes/private.routes');
 const errorHandler = require('./middlewares/error.middleware');
+const swaggerUI = require('swagger-ui-express');
+const swaggerSpec = require('./utils/swagger');
+
 const app = express();
 
 // Middleware
@@ -21,5 +24,6 @@ app.get('/health', ( req, res ) => {
 });
 
 app.use(errorHandler);
+app.use('/api-docs',swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 module.exports = app;
